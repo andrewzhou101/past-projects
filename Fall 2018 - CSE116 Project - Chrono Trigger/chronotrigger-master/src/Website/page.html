@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="video.js"></script>
+    <script src="/cookie"></script>
+    <script src="/addname"></script>
+    <script src="/backEnd_key"></script>
+    <title>CSE Students Play Chrono Trigger</title>
+
+</head>
+<script id="username.js">
+    function ajaxGetRequest(path, callback){
+        var request = new XMLHttpRequest();
+        request.onreadystatechange = function(){
+            if (this.readyState === 4 && this.status === 200){
+                callback(this.response);
+            }
+        };
+        request.open("GET", path, true);
+        request.send();
+    }
+
+    function ajaxPostRequest(path, data, callback){
+        var request = new XMLHttpRequest();
+        request.onreadystatechange = function(){
+            if (this.readyState === 4 && this.status === 200){
+                callback(this.response);
+            }
+        };
+        request.open("POST", path, true);
+        request.send(data);
+    }
+
+    function clearer(){
+        document.getElementById("chatbox").innerHTML = ""
+    }
+
+    function addName() {
+        function clear(){
+            document.getElementById("addname").value = "";
+        }
+        var name = document.getElementById("addName").value;
+        alert("PEAVCE");
+        if (button.onclick == True){
+            var txt = JSON.parse({"User":name});
+            var toSend = JSON.stringify(txt);
+        }
+        ajaxPostRequest("/addName", toSend, clear());
+    }
+</script>
+
+<script id="Button Presses">
+    function doNothing(){
+
+    }
+    function printA(){
+        ajaxGetRequest("/keyA", doNothing);
+    }
+    function printB (){
+        ajaxGetRequest("/keyB", doNothing);
+    }
+    function printX(){
+        ajaxGetRequest("/keyX", doNothing);
+    }
+    function printY (){
+        ajaxGetRequest("/keyY", doNothing);
+    }
+    function printL(){
+        ajaxGetRequest("/keyL", doNothing);
+    }
+    function printR (){
+        ajaxGetRequest("/keyR", doNothing);
+    }
+    function printLeft(){
+        ajaxGetRequest("/keyLeft", doNothing);
+    }
+    function printRight (){
+        ajaxGetRequest("/keyRight", doNothing);
+    }
+    function printDown(){
+        ajaxGetRequest("/keyDown", doNothing);
+    }
+    function printUp (){
+        ajaxGetRequest("/keyUp", doNothing);
+    }
+    function printSelect(){
+        ajaxGetRequest("/keySelect", doNothing);
+    }
+    function printStart (){
+        ajaxGetRequest("/keyStart", doNothing);
+    }
+</script>
+
+<style>
+    .button {
+        background-color: #af1d35; /* Green */
+        border: none;
+        color: white;
+        width: 32px;
+        padding: 40px 40px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+    }
+
+    .buttonlong {
+        background-color: #af1d35; /* Green */
+        border: none;
+        color: white;
+        width: 32px;
+        padding: 40px 100px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+    }
+
+    div1.fixed {
+        position: fixed;
+        top: 200px;
+        right: 180px;
+        width: 228px;
+        border: 3px solid #af1d35;
+    }
+
+    div2.fixed {
+        position: fixed;
+        top: 370px;
+        right: 115px;
+        border: 3px solid #af1d35;
+    }
+
+    div3.fixed {
+        position: fixed;
+        top: 480px;
+        right: 115px;
+        width: 344px;
+        border: 3px solid #af1d35;
+    }
+
+    div4.fixed {
+        position: fixed;
+        top: 660px;
+        right: 55px;
+        width: 468px;
+        border: 3px solid #af1d35;
+    }
+
+    div5.fixed {
+        position: fixed;
+        top: 90px;
+        right: 180px;
+        width: 228px;
+        border: 3px solid #af1d35;
+    }
+
+    div6.fixed {
+        position: fixed;
+        top: 10px;
+        right: 5px;
+        width: 400px;
+    }
+
+    div7.fixed {
+        position: fixed;
+        top: 5px;
+        right: -240px;
+        width: 400px;
+    }
+
+    u.fixed {
+        position: fixed;
+        top: 20px;
+        right: 225px;
+        font-size: 30px;
+    }
+
+    img.fixed {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 85%;
+    }
+
+    body3.fixed {
+        position: fixed;
+        top: 40%;
+        right: 10px;
+        width: 400px;
+    }
+
+    body4.fixed {
+        position: fixed;
+        top: 60px;
+        right: 7%;
+        font-size: 12px;
+    }
+
+    html, body {
+        position:fixed;
+        top:0;
+        bottom:0;
+        left:0;
+        right:0;
+    }
+</style>
+
+<body onload="checkCookie()" style="background-color:LightPink">
+
+
+<body1>
+    <allmybuttons>
+        <u class="fixed">
+            Commands
+        </u>
+
+        <div1 class="fixed">
+            <a class="button" href="#" onclick="printY()">Y</a>
+            <a class="button" href='#' onclick="printB()">B</a>
+        </div1>
+
+        <div2 class="fixed">
+            <a class="button" href="#" onclick="printL()">L</a>
+            <a class="button" href='#' onclick="printUp()">Up</a>
+            <a class="button" href="#" onclick="printR()">R</a>
+        </div2>
+
+        <div3 class="fixed">
+            <a class="button" href='#' onclick="printLeft()">Left</a>
+            <a class="button" href='#' onclick="printDown()">Down</a>
+            <a class="button" href='#' onclick="printRight()">Right</a>
+
+        </div3>
+
+        <div4 class="fixed">
+            <a class="buttonlong" href="#" onclick="printSelect()">Select</a>
+            <a class="buttonlong" href="#" onclick="printStart()">Start</a>
+        </div4>
+
+        <div5 class="fixed">
+            <a class="button" href='#' onclick="printX()">X</a>
+            <a class="button" href='#' onclick="printA()">A</a>
+        </div5>
+    </allmybuttons>
+
+</body1>
+
+<body2>
+    <iframe
+            src="https://mixer.com/embed/player/Gytanzo"
+            height="620"
+            width="1080"
+            frameborder="0"
+            scrolling="no"
+            allowfullscreen="true">
+        ></iframe>
+
+</body2>
+
+<body3 class="fixed" onload="loadChat();">
+    <div id="Chat"></div>
+    <br/>
+</body3>
+
+<body4 id = "chatbox" class="fixed" onload="createCookie(name, Andrew)">
+</body4>
+
+
+
+</body>
+</html>
