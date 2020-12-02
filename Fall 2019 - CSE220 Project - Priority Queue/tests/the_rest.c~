@@ -1,0 +1,50 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <stdbool.h>
+
+#include "../src/priority_queue.h"
+#include "../src/validate.h"
+
+/* Tests peek and get */
+
+int main(int argc, char *argv[])
+{
+    struct PriorityQueue* pqueue = pqueue_init(5);
+    struct PQNode* head;
+    struct PQNode* get;
+    pqueue_insert(pqueue, 3, 1);
+    head = pqueue->head;
+    if(!(pqueue->head = pqueue_peek(pqueue))){
+        puts("failed1");
+            return 1;
+    }
+    get = pqueue_get(pqueue);
+    if(!(pqueue->head == NULL && get == head)){
+        puts("failed2");
+        return 1;
+    }
+
+    pqueue_insert(pqueue, 3, 1);
+    pqueue_insert(pqueue, 2, 0);
+    head = pqueue->head;
+    get = pqueue_get(pqueue);
+    if(!(pqueue->head->value == 3 && pqueue->head->priority == 1 && pqueue->head->prev == NULL && pqueue->tails[0] == NULL)){
+        puts("failed3");
+        return 1;
+    }
+
+    pqueue_insert(pqueue, 5, 1);
+    get = pqueue_get(pqueue);
+    if(!(pqueue->tails[1]->value = 5)){
+        puts("failed4");
+        return 1;
+    }
+   
+    
+
+
+
+    
+    puts("passed");
+    return 0;
+}
