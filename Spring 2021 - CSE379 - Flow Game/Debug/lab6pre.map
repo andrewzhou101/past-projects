@@ -1,0 +1,327 @@
+******************************************************************************
+                  TI ARM Linker PC v20.2.2                     
+******************************************************************************
+>> Linked Tue May  4 12:41:42 2021
+
+OUTPUT FILE NAME:   <lab6pre.out>
+ENTRY POINT SYMBOL: "_c_int00_noargs"  address: 00001f61
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  FLASH                 00000000   00040000  000027b4  0003d84c  R  X
+  SRAM                  20000000   00008000  00001de9  00006217  RW X
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+00000000    00000000    000027b4   000027b4    r-x
+  00000000    00000000    0000026c   0000026c    r-- .intvecs
+  0000026c    0000026c    00001d54   00001d54    r-x .text
+  00001fc0    00001fc0    000007f4   000007f4    r-- .cinit
+20000000    20000000    00001df0   00000000    rw-
+  20000000    20000000    00001be9   00000000    rw- .data
+  20001bf0    20001bf0    00000200   00000000    rw- .stack
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.intvecs   0    00000000    0000026c     
+                  00000000    0000026c     tm4c123gh6pm_startup_ccs.obj (.intvecs)
+
+.text      0    0000026c    00001d54     
+                  0000026c    0000171a     lab6.obj (.text)
+                  00001986    00000490     lab6library.obj (.text)
+                  00001e16    0000009c     rtsv7M4_T_le_v4SPD16_eabi.lib : memcpy_t2.asm.obj (.text)
+                  00001eb2    00000068                                   : copy_decompress_lzss.c.obj (.text:decompress:lzss:__TI_decompress_lzss)
+                  00001f1a    00000002     --HOLE-- [fill = 0]
+                  00001f1c    00000044                                   : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit:__TI_auto_init_nobinit_nopinit)
+                  00001f60    00000034                                   : boot_cortex_m.c.obj (.text:_c_int00_noargs:_c_int00_noargs)
+                  00001f94    0000000e                                   : copy_decompress_none.c.obj (.text:decompress:none:__TI_decompress_none)
+                  00001fa2    0000000c     tm4c123gh6pm_startup_ccs.obj (.text)
+                  00001fae    0000000a     lab6wrapper.obj (.text)
+                  00001fb8    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : pre_init.c.obj (.text:_system_pre_init)
+                  00001fbc    00000004                                   : exit.c.obj (.text:abort:abort)
+
+.cinit     0    00001fc0    000007f4     
+                  00001fc0    000007e2     (.cinit..data.load) [load image, compression = lzss]
+                  000027a2    00000002     --HOLE-- [fill = 0]
+                  000027a4    00000008     (__TI_handler_table)
+                  000027ac    00000008     (__TI_cinit_table)
+
+.init_array 
+*          0    00000000    00000000     UNINITIALIZED
+
+.data      0    20000000    00001be9     UNINITIALIZED
+                  20000000    00001800     boards.obj (.data)
+                  20001800    000003e9     lab6.obj (.data)
+
+.stack     0    20001bf0    00000200     UNINITIALIZED
+                  20001bf0    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : boot_cortex_m.c.obj (.stack)
+                  20001bf4    000001fc     --HOLE--
+
+__llvm_prf_cnts 
+*          0    20000000    00000000     UNINITIALIZED
+
+MODULE SUMMARY
+
+       Module                         code   ro data   rw data
+       ------                         ----   -------   -------
+    .\
+       lab6.obj                       5914   0         1001   
+       boards.obj                     0      0         6144   
+       lab6library.obj                1168   0         0      
+       tm4c123gh6pm_startup_ccs.obj   12     620       0      
+       lab6wrapper.obj                10     0         0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         7104   620       7145   
+                                                              
+    C:\ti\ccs1020\ccs\tools\compiler\ti-cgt-arm_20.2.2.LTS\lib\rtsv7M4_T_le_v4SPD16_eabi.lib
+       memcpy_t2.asm.obj              156    0         0      
+       copy_decompress_lzss.c.obj     104    0         0      
+       autoinit.c.obj                 68     0         0      
+       boot_cortex_m.c.obj            52     0         0      
+       copy_decompress_none.c.obj     14     0         0      
+       exit.c.obj                     4      0         0      
+       pre_init.c.obj                 4      0         0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         402    0         0      
+                                                              
+       Stack:                         0      0         512    
+       Linker Generated:              0      2034      0      
+    +--+------------------------------+------+---------+---------+
+       Grand Total:                   7506   2654      7657   
+
+
+LINKER GENERATED COPY TABLES
+
+__TI_cinit_table @ 000027ac records: 1, size/record: 8, table size: 8
+	.data: load addr=00001fc0, load size=000007e2 bytes, run addr=20000000, run size=00001be9 bytes, compression=lzss
+
+
+LINKER GENERATED HANDLER TABLE
+
+__TI_handler_table @ 000027a4 records: 2, size/record: 4, table size: 8
+	index: 0, handler: __TI_decompress_lzss
+	index: 1, handler: __TI_decompress_none
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address   name                          
+-------   ----                          
+00001fbd  C$$EXIT                       
+00001fa3  ResetISR                      
+00001561  Switch_Handler                
+00001585  Timer_Handler                 
+000007c3  UART0_Handler                 
+20001df0  __STACK_END                   
+00000200  __STACK_SIZE                  
+20001df0  __STACK_TOP                   
+000027ac  __TI_CINIT_Base               
+000027b4  __TI_CINIT_Limit              
+000027a4  __TI_Handler_Table_Base       
+000027ac  __TI_Handler_Table_Limit      
+00001f1d  __TI_auto_init_nobinit_nopinit
+00001eb3  __TI_decompress_lzss          
+00001f95  __TI_decompress_none          
+ffffffff  __TI_pprof_out_hndl           
+ffffffff  __TI_prof_data_size           
+ffffffff  __TI_prof_data_start          
+00000000  __TI_static_base__            
+00001e17  __aeabi_memcpy                
+00001e17  __aeabi_memcpy4               
+00001e17  __aeabi_memcpy8               
+ffffffff  __binit__                     
+ffffffff  __c_args__                    
+UNDEFED   __mpu_init                    
+20001bf0  __stack                       
+20000000  __start___llvm_prf_cnts       
+20000000  __stop___llvm_prf_cnts        
+00001f61  _c_int00_noargs               
+UNDEFED   _system_post_cinit            
+00001fb9  _system_pre_init              
+00001fbd  abort                         
+ffffffff  binit                         
+20000e00  board10_edit                  
+20000d80  board10_og                    
+20000e80  board10_sol                   
+20000f80  board11_edit                  
+20000f00  board11_og                    
+20001000  board11_sol                   
+20001100  board12_edit                  
+20001080  board12_og                    
+20001180  board12_sol                   
+20001280  board13_edit                  
+20001200  board13_og                    
+20001300  board13_sol                   
+20001400  board14_edit                  
+20001380  board14_og                    
+20001480  board14_sol                   
+20001580  board15_edit                  
+20001500  board15_og                    
+20001600  board15_sol                   
+20001700  board16_edit                  
+20001680  board16_og                    
+20001780  board16_sol                   
+20000080  board1_edit                   
+20000000  board1_og                     
+20000100  board1_sol                    
+20000200  board2_edit                   
+20000180  board2_og                     
+20000280  board2_sol                    
+20000380  board3_edit                   
+20000300  board3_og                     
+20000400  board3_sol                    
+20000500  board4_edit                   
+20000480  board4_og                     
+20000580  board4_sol                    
+20000680  board5_edit                   
+20000600  board5_og                     
+20000700  board5_sol                    
+20000800  board6_edit                   
+20000780  board6_og                     
+20000880  board6_sol                    
+20000980  board7_edit                   
+20000900  board7_og                     
+20000a00  board7_sol                    
+20000b00  board8_edit                   
+20000a80  board8_og                     
+20000b80  board8_sol                    
+20000c80  board9_edit                   
+20000c00  board9_og                     
+20000d00  board9_sol                    
+00000000  g_pfnVectors                  
+00001ad9  gpio_init                     
+00001b63  illuminate_RGB_LED            
+00001c27  int2str                       
+00001ce1  interrupt_init                
+0000026d  lab6                          
+00001faf  main                          
+00001e17  memcpy                        
+00001c07  num_digits                    
+000019af  output_character              
+000019d7  output_string                 
+2000182c  paused                        
+00001c85  print_newline                 
+00001987  read_character                
+00001b3b  read_from_push_btn            
+000019f5  read_string                   
+00001c5b  str2int                       
+00001d63  timer_init                    
+00001a1b  uart_init                     
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address   name                          
+-------   ----                          
+00000000  __TI_static_base__            
+00000000  g_pfnVectors                  
+00000200  __STACK_SIZE                  
+0000026d  lab6                          
+000007c3  UART0_Handler                 
+00001561  Switch_Handler                
+00001585  Timer_Handler                 
+00001987  read_character                
+000019af  output_character              
+000019d7  output_string                 
+000019f5  read_string                   
+00001a1b  uart_init                     
+00001ad9  gpio_init                     
+00001b3b  read_from_push_btn            
+00001b63  illuminate_RGB_LED            
+00001c07  num_digits                    
+00001c27  int2str                       
+00001c5b  str2int                       
+00001c85  print_newline                 
+00001ce1  interrupt_init                
+00001d63  timer_init                    
+00001e17  __aeabi_memcpy                
+00001e17  __aeabi_memcpy4               
+00001e17  __aeabi_memcpy8               
+00001e17  memcpy                        
+00001eb3  __TI_decompress_lzss          
+00001f1d  __TI_auto_init_nobinit_nopinit
+00001f61  _c_int00_noargs               
+00001f95  __TI_decompress_none          
+00001fa3  ResetISR                      
+00001faf  main                          
+00001fb9  _system_pre_init              
+00001fbd  C$$EXIT                       
+00001fbd  abort                         
+000027a4  __TI_Handler_Table_Base       
+000027ac  __TI_CINIT_Base               
+000027ac  __TI_Handler_Table_Limit      
+000027b4  __TI_CINIT_Limit              
+20000000  __start___llvm_prf_cnts       
+20000000  __stop___llvm_prf_cnts        
+20000000  board1_og                     
+20000080  board1_edit                   
+20000100  board1_sol                    
+20000180  board2_og                     
+20000200  board2_edit                   
+20000280  board2_sol                    
+20000300  board3_og                     
+20000380  board3_edit                   
+20000400  board3_sol                    
+20000480  board4_og                     
+20000500  board4_edit                   
+20000580  board4_sol                    
+20000600  board5_og                     
+20000680  board5_edit                   
+20000700  board5_sol                    
+20000780  board6_og                     
+20000800  board6_edit                   
+20000880  board6_sol                    
+20000900  board7_og                     
+20000980  board7_edit                   
+20000a00  board7_sol                    
+20000a80  board8_og                     
+20000b00  board8_edit                   
+20000b80  board8_sol                    
+20000c00  board9_og                     
+20000c80  board9_edit                   
+20000d00  board9_sol                    
+20000d80  board10_og                    
+20000e00  board10_edit                  
+20000e80  board10_sol                   
+20000f00  board11_og                    
+20000f80  board11_edit                  
+20001000  board11_sol                   
+20001080  board12_og                    
+20001100  board12_edit                  
+20001180  board12_sol                   
+20001200  board13_og                    
+20001280  board13_edit                  
+20001300  board13_sol                   
+20001380  board14_og                    
+20001400  board14_edit                  
+20001480  board14_sol                   
+20001500  board15_og                    
+20001580  board15_edit                  
+20001600  board15_sol                   
+20001680  board16_og                    
+20001700  board16_edit                  
+20001780  board16_sol                   
+2000182c  paused                        
+20001bf0  __stack                       
+20001df0  __STACK_END                   
+20001df0  __STACK_TOP                   
+ffffffff  __TI_pprof_out_hndl           
+ffffffff  __TI_prof_data_size           
+ffffffff  __TI_prof_data_start          
+ffffffff  __binit__                     
+ffffffff  __c_args__                    
+ffffffff  binit                         
+UNDEFED   __mpu_init                    
+UNDEFED   _system_post_cinit            
+
+[100 symbols]
